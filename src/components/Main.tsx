@@ -1,6 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
+import { PhotoHolder } from "./PhotoHolder";
+import { valueContext } from "../Types_Interfaces/typesAndInterfaces";
+import { Description } from "./Description";
+import { Button } from "./Button";
 
-const CatContext = React.createContext({})
+export const CatContext = React.createContext<valueContext>({
+  photo: "",
+  description: "",
+  id: ""
+})
 
 export const Main: React.FC = () => {
 
@@ -13,7 +21,8 @@ export const Main: React.FC = () => {
   const [catState, setCatState] = useState({
     photoURL: "",
     idBreed: "",
-    description: ""
+    description: "",
+    error: false
   })
 
   const randomInteger: Function = () => {
@@ -38,7 +47,11 @@ export const Main: React.FC = () => {
         })
         console.log(allBreed)
         console.log(catState.photoURL)
-      }) 
+      })
+      .catch( error => setCatState({
+        ...catState,
+        error: !catState.error
+      }) )
   }, []) 
 
   useEffect( () => {
@@ -57,53 +70,6 @@ export const Main: React.FC = () => {
       }) 
   }, [breed])
 
-  useEffect( () => {
-    console.log(breed)
-    setCatState({
-      ...catState,
-
-    })
-  }, [allBreed])
-
-  /*
-   * useEffect( () => {
-   * 
-   *   fetch( url )
-   *     .then( response => response.json())
-   *     .then( data => {
-   *       setCatState({
-   *         ...catState, 
-   *         allBreed: data,
-   *       })
-   *       
-   *       return data
-   *     })
-   *     .then( result => {
-   *       console.log(catState)
-   *       setCatState({
-   *         ...catState,
-   *         photoURL: result[random].image.url,
-   *         description: result[random].description,
-   *         idBreed: result[random].id
-   *       })
-   *       console.log(catState)
-   *       return result
-   *     }) 
-   *     
-   *     .then( result => console.log(result))
-   * 
-   * 
-   * }, []) 
-   * 
-   * useEffect( () => {
-   *   // console.log(catState.idBreed)
-   *   console.log("after fetch: " + JSON.stringify(catState))
-   *   fetch( `https://api.thecatapi.com/v1/images/search?breed_ids=${catState.idBreed}` )
-   *   .then(response => response.json())
-   *   .then(result => console.log(result))
-   * }, [catState.allBreed])
-  */
-
   function changeBread() {
     const newRandom = randomInteger()
     setBreed(newRandom)
@@ -120,35 +86,18 @@ export const Main: React.FC = () => {
 
   return (
     <CatContext.Provider value={{
-      // photo: catState.photoURL,
-      // description: catState.description,
-      // allBreed: catState.allBreed,
-      // allPhotoOfBreed: catState.allPhotoOfBreed
+      photo: catState.photoURL,
+      description: catState.description,
+      id: catState.idBreed
     }}>
       <div className="main">
         <div className="photoAndDiscription">
-          <div className="photoHolder">
-            
-            {/* {catState && (<img className="photo" src={catState.photoURL} />)} */}
-            {
-              catState.idBreed
-                ? (<img className="photo" src={catState.photoURL} />)
-                : catState && (<img className="photo" src={catState.photoURL} />)
-              
-            }
-
-          </div>
-          <div className="discription">
-            <p> {catState.description} </p>
-          </div>
+          <PhotoHolder />
+          <Description />
         </div>
         <div className="buttons">
-          <div className="buttonsBread">
-          <button className="btn" onClick={changeBread}>CHANGE BREAD</button>
-          </div>
-          <div className="buttonChangePhoto">
-            <button className="btn" onClick={changePhotoInBread}>CHANGE PHOTO</button> 
-          </div>
+          <Button changeFunction={changePhotoInBread} text="CHANGE PHOTO"/>
+          <Button changeFunction={changeBread} text="CHANGE BREED"/>
         </div>
       </div>
     </CatContext.Provider>

@@ -13,7 +13,6 @@
 .main {
   border: 1px solid black;
   background: linear-gradient(35deg, rgb(153, 153, 226), pink);
-  // margin-top: 50px;
   width: 90%;
   height: 80vh;
   padding: 20px;
@@ -27,7 +26,6 @@
     border: none;
     width: 100%;
     height: 70%;
-    // padding: 10px;
     gap: 10px
   }
   .buttons {
@@ -41,28 +39,14 @@
 .photoHolder {
   width: 70%;
   height: 100%;
-  // margin: 10px;
   display: flex;
   justify-content: center;
   .photo {
-    // max-width: calc(&width);
-    // max-height: calc(&height);
-    // width: 100%;
     height: 100%;
   }
 }
 .discription {
   width: 30%;
   height: 100%;
-  // margin: 10px;
 }
-.buttonsBread {
-  width: 200px;
-  height: 100px;
-  margin: 20px;
-}
-.buttonChangePhoto {
-  width: 200px;
-  height: 100px;
-  margin: 20px;
-}
+
