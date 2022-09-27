@@ -1,10 +1,10 @@
 import React from "react";
-import { propsType } from "../Types_Interfaces/typesAndInterfaces"
+import { IPropsType } from "../Types_Interfaces/typesAndInterfaces"
 
-export const Button: React.FC<propsType> = ( { changeFunction, text } ) => {
+export const Button: React.FC<IPropsType> = ( { changeFunction, text } ) => {
 
   return (
-      <button className="btn" onClick={ () => changeFunction()}> 
+      <button className="button" onClick={ () => changeFunction()}> 
         {text} 
       </button>
   )

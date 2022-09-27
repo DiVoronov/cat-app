@@ -1,52 +1,121 @@
 
 .App {
-  color: blue;
-  background: linear-gradient(35deg, rgb(186, 226, 153), rgb(182, 222, 224));
-  border: 1px solid black;
+  color: #373D59;
+  font-family: 'Noto Sans';
+  font-style: normal;
+  background: #F5F5F5;
   padding: 10px;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-content: center;
+
+  .main {
+    border: 5px solid rgba(236, 223, 223, 0.452);
+    background: linear-gradient(20deg, #cdbef0, #e5dcf0, #e4c4ee);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.199);
+    border-radius: 16px;
+    width: 98%;
+    max-width: 1000px;
+    height: max-content;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    .title{
+      margin: 1rem;
+    }
+
+    .photoAndDiscription {
+      display: flex;
+      width: 100%;
+      height: 88%;
+      gap: 10px;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+
+      .discription {
+        width: 80%;
+        height: 100%;
+        text-align: justify;
+        
+        p {
+          margin: 10px;
+          font-family: 'Noto Sans';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 22px;
+          color: #1e2233;
+        }
+
+        > hr {
+          border-color: #e0c0f12c;
+          width: 95%;
+        }
+
+        > h2 {
+          font-size: 2.5rem;
+          text-align: center;
+        }
+      }
+
+      .photoHolder {
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        margin: 5px;
+      
+        .photo {
+          max-width: 70%;
+          object-fit: contain;
+          box-shadow: 0px 3px 10px rgba(34, 34, 34, 0.575);
+          border-radius: 10px;
+        }
+      }
+    }
+
+    .button {
+      display: flex;
+      border: 4px solid rgba(236, 223, 223, 0.274);
+      justify-content: space-around;
+      align-items: center;
+      width: max-content;
+      height: 40px;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 150%;
+      background: linear-gradient(180deg, #9B7EFA 0%, #7E5AE1 100%);
+      border-radius: 15px;
+      color: #FFFFFF;
+      margin: 15px;
+    }
+    .button:hover {
+      cursor: pointer;
+      box-shadow: 0px 3.5px 5.5px rgba(0, 0, 5, 0.5);
+      scale: 1.05;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 5px;
+      align-items: center;
+    }
+
+    .loader {
+      background-color: #9B7EFA;
+      border-radius: 15px;
+    }
+  }
 }
 
-.main {
-  border: 1px solid black;
-  background: linear-gradient(35deg, rgb(153, 153, 226), pink);
-  width: 90%;
-  height: 80vh;
-  padding: 20px;
-  div {
-    border: 1px solid black;
-    background: linear-gradient(35deg, rgb(186, 226, 153), rgb(182, 222, 224));
-  }
+@media screen and (max-width: 850px) {
   .photoAndDiscription {
-    background: none;
-    display: flex;
-    border: none;
-    width: 100%;
-    height: 70%;
-    gap: 10px
-  }
-  .buttons {
-    background: none;
-    display: flex;
-    border: none;
-    justify-content: space-around;
+    flex-wrap: wrap;
   }
 }
-
-.photoHolder {
-  width: 70%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  .photo {
-    height: 100%;
-  }
-}
-.discription {
-  width: 30%;
-  height: 100%;
-}
-
