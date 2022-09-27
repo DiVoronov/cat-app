@@ -37,6 +37,7 @@
       justify-content: center;
       align-content: center;
       align-items: center;
+      // flex-wrap: wrap;
 
       .discription {
         width: 80%;
@@ -65,13 +66,12 @@
       }
 
       .photoHolder {
-        height: 50%;
         display: flex;
         justify-content: center;
         margin: 5px;
       
         .photo {
-          max-width: 70%;
+          max-width: 80%;
           object-fit: contain;
           box-shadow: 0px 3px 10px rgba(34, 34, 34, 0.575);
           border-radius: 10px;
@@ -117,5 +117,10 @@
 @media screen and (max-width: 850px) {
   .photoAndDiscription {
     flex-wrap: wrap;
+  }
+}
+@media screen and (min-width: 850px) {
+  .photoHolder {
+    max-width: 65%;
   }
 }
